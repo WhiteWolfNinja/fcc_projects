@@ -1,0 +1,140 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+  div {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), url("chinese_dragon1.jpg");
+    background-size: cover;
+    background-position: center;
+    color: lightgrey;
+    font-family: cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 18%;
+  }
+}
+
+nav {
+  display: flex;
+  position: relative;
+  z-index: 2;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: -15px;
+  padding: 0;
+  position: fixed;
+  top: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  background: linear-gradient(rgba(255, 0, 0, 0.9), rgba(0, 0, 0, 1));
+  li {
+    font-size: 1.25em;
+    padding: 15px;
+    a {
+      display: flex;
+      color: lightgrey;
+      align-items: center;
+      justify-content: space-around;
+      text-decoration: none;
+    }
+  }
+}
+
+li:hover{
+  background-color: black;
+
+}
+
+main {
+  display: flex;
+  top: 24%;
+  position: relative;
+  background: linear-gradient(rgba(20, 20, 20, 1), white);
+  width: 100%;
+  div {
+    h2{
+      color: lightgrey;
+    }
+  }
+}
+
+
+.flex-container {
+  width: 100%;
+  button {
+    padding: 4%;
+    padding-bottom: 6%;
+    border-radius: 15px;
+    border-color: rgba(0, 0, 0, 1);
+    background: linear-gradient(rgba(255, 0, 0, 0.9), rgba(0, 0, 0, 1));
+    color: lightgrey;
+    font-size: 1.2em;
+  }
+}
+
+.vis-text {
+  color: black;
+}
+
+#hours {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url("chinese_dragon2.jpg");
+  background-position: center;
+  background-size: contain;
+  color: lightgrey;
+  border-radius: 20px;
+  padding: 20px;
+  width: 60%;
+  height: 100%;
+  h3, p {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+  }
+}
+
+#payment {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  img {
+    width: 15%;
+    padding: 10px;
+  }
+}

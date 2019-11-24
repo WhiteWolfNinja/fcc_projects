@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>SQL Technical Documentation</title>
+
+  </head>
+
+  <body>
+
+    <nav id="navbar">
+      <header>
+
+      </header>
+
+    </nav>
+
+
+    <main id="main-doc">
+
+      <section class="main-section">
+        <header id="what_is_sql">
+          <h2>What Is SQL?</h2>
+        </header>
+
+        <p>This guide is to help anyone who has a basic understanding of databases gain a better grasp on the subject.  Keep in mind that there are many implementations of SQL and not all keywords are exactly the same across all variants.</p>
+        <p>SQL stands for (S)tructured (Q)uery (L)anguage.  It is used to create and manage relational databases of information for all sorts of applications.</p>
+      </section>
+
+      <section class="main-section">
+        <header id="four_main_components">
+          <h2>Four Main Components</h2>
+        </header>
+
+        <p>The four main components of SQL are the Data Definition Language, the Data Query Language, the Data Manipulation Language, and the Data Control Language.  Together, these three make up the core of SQL.  In the following sections, some of the most commonly used SQL keywords are defined followed by a code example to highlight proper usage.</p>
+      </section>
+
+      <section class="main-section">
+        <header id="data_definition_language">
+          <h2>Data Definition Language</h2>
+        </header>
+
+        <p>The Data Definition Language is used to create data structures within the database schema such as tables and columns.  Below are some of the most common keywords with a code example following each one.</p>
+
+        <div class="keywords">
+          <h3>Keywords</h3>
+            <p>CREATE - Used to create tables.  Here we create a table with three columns.  Each column has a data type associated with it upon creation.</p>
+              <code>CREATE TABLE shop (id INTEGER PRIMARY KEY, item TEXT, price FLOAT);</code>
+            <p>ALTER - Used to modify tables (add, drop, or modify columns).  In the example, we add the column 'quantity' which accepts INTEGER values as data.</p>
+              <code>ALTER TABLE shop ADD quantity INTEGER;</code>
+            <p>DROP - Used to delete tables or columns.  Here is how we would delete the entire table <em>and</em> all it's data.</p>
+              <code>DROP TABLE shop;</code>
+            <p>TRUNCATE - Deletes the data within a data structure, but not the structure itself.  The following command would erase all the entries, but leave the columns intact.</p>
+              <code>TRUNCATE TABLE shop;</code>
+        </div>
+      </section>
+
+      <section class="main-section">
+        <header id="data_query_language">
+          <h2>Data Query Language</h2>
+        </header>
+
+        <p>The Data Query Language is used to access data stored in the database.  These commands can become increasingly complex when you query a large database for very specific information.</p>
+
+        <div class="keywords">
+          <h3>Keywords</h3>
+            <p>SELECT - Use this to choose which columns of a table to return.  You must SELECT each column you want to return by name or by other special operators.</p>
+            <p>FROM - Chooses which table to return data from.  Always paired with a SELECT statement to target a specific table or tables.  Below, we would return the columns 'id' and 'item', and all their data, from the table 'shop'.</p>
+              <code>SELECT id, item FROM shop;</code>
+            <p>WHERE - Chooses whch row to return data from.  In the example, we want to return all the data for the item 'Xbox'.</p>
+              <code>SELECT id, item, price FROM shop WHERE item='Xbox';</code>
+            <p>GROUP BY - Collapses data from rows with the same value to return a summary of data.  Often used in conjunction with aggregate functions.  In the example, we group all the 'item' with the same 'price' and return the total sum of each 'item' with that 'price'.</p>
+              <code>SELECT SUM(item), price FROM shop GROUP BY price;</code>
+            <p>ORDER BY - Sorts the data in either ascending or descending order.  Here we return all the data in the table 'shop' ordered alphabetically by 'item' name.</p>
+              <code>SELECT * FROM shop ORDER BY item;</code>
+        </div>
+      </section>
+
+      <section class="main-section">
+        <header id="data_manipulation_language">
+          <h2>Data Manipulation Language</h2>
+        </header>
+
+        <p>The Data Manipulation Language is comprised of keywords that are used to add, delete, and modify data in the database.</p>
+
+        <div class="keywords">
+          <h3>Keywords</h3>
+          <p>INSERT - Adds data to a table.  Here we'll add a row to our table.</p>
+            <code>INSERT INTO shop(id, item) VALUES (1, 'Xbox');</code>
+          <p>UPDATE - Changes data in a table.  Make sure to qualify WHERE you want to update your data!  If you omit the WHERE clause, you will change all the data in the table!</p>
+            <code>UPDATE shop SET price = 200 WHERE item = 'Xbox';</code>
+          <p>DELETE - Removes data from a table. </p>
+            <code>DELETE FROM shop WHERE item = 'Xbox';</code>
+        </div>
+      </section>
+
+      <section class="main-section">
+        <header id="data_control_language">
+          <h2>Data Control Language</h2>
+        </header>
+
+        <p>The Data Control Language is primarily used to grant or revoke user priviliges to a database.  It deals with who is allowed to perform functions on the data.</p>
+
+        <div class="keywords">
+          <h3>Keywords</h3>
+          <p>GRANT - Gives specific permissions to declared users.  The following example grants permissions to create a table in the database.</p>
+            <code>GRANT CREATE TABLE TO john_smith;</code>
+          <p>REVOKE - Removes permissions from a specified user.  Here we'll revoke the permissions we granted in the last example.</p>
+            <code>REVOKE CREATE TABLE FROM john_smith;</code>
+
+        </div>
+      </section>
+
+      <section class="main-section">
+        <header id="data_types">
+          <h2>Data Types</h2>
+        </header>
+
+        <p>There are a vast number of data types in SQL.  As with the rest of SQL, there are some keywords that are implementation specific.  They can broadly be grouped in the following categories: Number, Character/String, Date/Time.</p>
+
+        <div class="keywords">
+          <h3>Keywords</h3>
+            <p>Number:  This group contains numbers of varying lengths and types.  SMALLINT, INTEGER, BIGINT all contain whole numbers only. FLOAT, DOUBLE PRECISION, REAL, DECIMAL are able to hold whole numbers as well as decimals.</p>
+              <code>SMALLINT, INTEGER, BIGINT, FLOAT, DOUBLE PRECISION, REAL, DECIMAL</code>
+            <p>Character/String:  This group contains text information.</p>
+              <code>CHARACTER, VARCHAR(number of characters)</code>
+            <p>Date/Time:  These keywords are used to define time and/or date data.</p>
+              <code>DATE, TIME, TIMESTAMP</code>
+
+        </div>
+      </section>
+
+      <section class="main-section">
+        <header id="aggregate_functions">
+          <h2>Aggregate Functions</h2>
+        </header>
+
+        <p>Aggregate functions are functions which provide metadata about a subset of information.</p>
+
+        <div class="keywords">
+          <h3>Keywords</h3>
+            <p>AVG - Calculates the average of a set of values.</p>
+              <code>SELECT AVG(price) FROM shop;</code>
+            <p>SUM - Returns the addition of a subset.  In the examples below, we'll be performing our functions on the subset of data defined by the GROUP BY statement.</p>
+              <code>SELECT SUM(price) FROM shop GROUP BY item;</code>
+            <p>COUNT - Counts the number of rows in a set of data.</p>
+              <code>SELECT COUNT(item) FROM shop; </code>
+            <p>MIN - Retrieves the minimum value in a set of values.</p>
+              <code>SELECT MIN(price) FROM shop;</code>
+            <p>MAX - Retrives the maximum value in a set of values</p>
+              <code>SELECT MAX(price) FROM shop;</code>
+        </div>
+      </section>
+
+      <section class="main-section">
+        <header id="database_functions">
+          <h2>Database Functions</h2>
+        </header>
+
+        <div class="keywords">
+          <h3>Keywords</h3>
+          <p>JOIN - Use this when you want to merge tables.  Note the different types of joins.  You have one inner join, but three types of outer join.</p>
+            <ul>
+              <li><strong>INNER</strong> - This type of join is used when you want to merge two or more tables on matching data between them.</li>
+              <li><strong>LEFT (OUTER)</strong> - This returns all data from the left table and all matching data from the right table.</li>
+              <li><strong>RIGHT (OUTER)</strong> - This returns all data from the right table and all matching data from the left table.</li>
+              <li><strong>FULL (OUTER)</strong> - This returns all data when there is either a match in the left table or right table. </li>
+            </ul>
+            <code>SELECT shop.item, shop.quantity, warehouse.quantity FROM shop INNER JOIN warehouse ON shop.id = warehouse.id;</code>
+          <p>In the above example, we used INNER JOIN to combine two tables.  In the example below, we'll use LEFT JOIN to retrieve all the rows of items from our shop and their current quantity along with the quantity of items in the warehouse.</p>
+            <code>SELECT shop.item, shop.quantity, warehouse.quantity FROM shop LEFT JOIN warehouse ON shop.id = warehouse.id;</code>
+        </div>
+      </section>
+
+      <section class="main-section">
+        <header id="reference">
+          <h2>Reference</h2>
+        </header>
+
+      </section>
+    </main>
+  </body>
+</html>
